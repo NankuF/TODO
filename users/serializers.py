@@ -6,7 +6,8 @@ from .models import CustomUser
 class CustomUserModelSerializer(HyperlinkedModelSerializer):
     class Meta:
         model = CustomUser
-        fields = ['url', 'username', 'first_name', 'last_name', 'email']
+        fields = ['url', 'username', 'first_name', 'last_name', 'email',
+                  'password', 'is_staff', 'is_superuser']
 
     def create(self, validated_data):
         user = CustomUser.objects.create_user(**validated_data)
