@@ -4,6 +4,7 @@ from users.models import CustomUser
 
 
 class Project(models.Model):
+    users = models.ManyToManyField(CustomUser)
     name = models.CharField(max_length=100, unique=True)
     repository = models.URLField(blank=True)
 
@@ -22,4 +23,3 @@ class ToDo(models.Model):
 
     def __str__(self):
         return f'{self.description}'
-
