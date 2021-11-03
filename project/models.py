@@ -16,8 +16,8 @@ class ToDo(models.Model):
     """Заметка"""
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-    description = models.DateTimeField()
-    active = models.BooleanField(default=True)
+    description = models.TextField()
+    active = models.BooleanField(default=True)  # default=True не срабатывает в DRF
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
