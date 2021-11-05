@@ -17,7 +17,9 @@ class ToDo(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     description = models.TextField()
-    active = models.BooleanField(default=True)  # default=True не срабатывает в DRF
+    # чтобы галочка ставилась, надо в сериалайзере прописать
+    # active = serializers.BooleanField(initial=True)
+    active = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
