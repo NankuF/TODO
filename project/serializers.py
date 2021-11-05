@@ -5,7 +5,7 @@ from .models import Project, ToDo
 
 
 class ProjectModelSerializer(HyperlinkedModelSerializer):
-    users = serializers.StringRelatedField(many=True)
+    # users = serializers.StringRelatedField(many=True)
 
     class Meta:
         model = Project
@@ -13,6 +13,8 @@ class ProjectModelSerializer(HyperlinkedModelSerializer):
 
 
 class ToDoModelSerializer(HyperlinkedModelSerializer):
+    active = serializers.BooleanField(initial=True)
+
     class Meta:
         model = ToDo
         fields = '__all__'
