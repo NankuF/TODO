@@ -1,15 +1,10 @@
 from rest_framework import status
-from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
-from rest_framework.generics import ListAPIView
 
 from .models import Project, ToDo
 from .serializers import ProjectModelSerializer, ToDoModelSerializer
 from .paginations import ProjectPageNumberPagination, ToDoPageNumberPagination
-
-
-# from rest_framework.pagination import LimitOffsetPagination
 
 
 class ProjectModelViewSet(ModelViewSet):
@@ -46,6 +41,7 @@ class ToDoModelViewSet(ModelViewSet):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 # https://www.django-rest-framework.org/api-guide/pagination/#limitoffsetpagination
+# from rest_framework.pagination import LimitOffsetPagination
 # class ToDoLimitOffsetPagination(LimitOffsetPagination):
 #     default_limit = 2
 #
