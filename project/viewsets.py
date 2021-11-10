@@ -10,7 +10,7 @@ from .paginations import ProjectPageNumberPagination, ToDoPageNumberPagination
 class ProjectModelViewSet(ModelViewSet):
     queryset = Project.objects.all()
     serializer_class = ProjectModelSerializer
-    pagination_class = ProjectPageNumberPagination
+    # pagination_class = ProjectPageNumberPagination
 
     def get_queryset(self):
         """
@@ -38,7 +38,7 @@ class ToDoModelViewSet(ModelViewSet):
     """
     queryset = ToDo.objects.all()
     serializer_class = ToDoModelSerializer
-    pagination_class = ToDoPageNumberPagination
+    # pagination_class = ToDoPageNumberPagination
 
     def get_queryset(self):
         project = self.request.query_params.get('project', '')

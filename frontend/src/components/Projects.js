@@ -6,6 +6,12 @@ const ProjectItem = ({project}) => {
             <td>
                 {project.name}
             </td>
+            <td>
+                {project.repository}
+            </td>
+            <td>
+                {project.users}
+            </td>
 
         </tr>
     )
@@ -16,6 +22,12 @@ const ProjectList = ({projects}) => {
         <table>
             <th>
                 Project
+            </th>
+            <th>
+                URL
+            </th>
+            <th>
+                Users
             </th>
 
             {
