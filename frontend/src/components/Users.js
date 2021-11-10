@@ -31,7 +31,7 @@ const UserList = ({users}) => {
                 Username
             </th>
             {users.map((user) => <UserItem user={user}/>)}
-        </table>
+         </table>
     )
 }
 
