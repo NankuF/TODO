@@ -3,16 +3,9 @@ import React from "react";
 const ProjectItem = ({project}) => {
     return (
         <tr>
-            <td>
-                {project.name}
-            </td>
-            <td>
-                {project.repository}
-            </td>
-            <td>
-                {project.users}
-            </td>
-
+            <td>{project.name}</td>
+            <td>{project.repository}</td>
+            <td>{project.users}</td>
         </tr>
     )
 }
@@ -20,20 +13,16 @@ const ProjectItem = ({project}) => {
 const ProjectList = ({projects}) => {
     return (
         <table>
-            <th>
-                Project
-            </th>
-            <th>
-                URL
-            </th>
-            <th>
-                Users
-            </th>
-
-            {
-                projects.map((project) => <ProjectItem project={project}/>)
-            }
-
+            <thead>
+            <tr>
+                <th>Project</th>
+                <th>URL</th>
+                <th>Users</th>
+            </tr>
+            </thead>
+            <tbody>
+            {projects.map((project) => <ProjectItem key={project.id} project={project}/>)}
+            </tbody>
         </table>
     )
 }

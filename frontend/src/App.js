@@ -1,13 +1,11 @@
 import React from "react";
-import logo from './logo.svg';
 import './App.css';
 import UserList from "./components/Users";
-import axios from "axios";
-import MenuList from "./components/Menu";
-import MenuItem from "./components/Menu";
-import FooterItem from "./components/Footer";
 import ProjectList from "./components/Projects";
 import TodoList from "./components/Todos";
+import axios from "axios";
+import {BrowserRouter, Route, Link} from 'react-router-dom';
+
 
 class App extends React.Component {
     constructor(props) {
@@ -22,25 +20,23 @@ class App extends React.Component {
     componentDidMount() {
         axios.get('http://127.0.0.1:8000/api/users').then(
             response => {
-                const users = response.data
+                const users = response.data.results
                 this.setState(
                     {'users': users}
                 )
             }
         ).catch(error => console.log(error))
-        axios.get('http://127.0.0.1:8000/api/projects/').then(
+        axios.get('http://127.0.0.1:8000/api/projects').then(
             response => {
-                const projects = response.data
-                console.log(projects)
+                const projects = response.data.results
                 this.setState(
                     {'projects': projects}
                 )
             }
         ).catch(error => console.log(error))
-                axios.get('http://127.0.0.1:8000/api/todo/').then(
+        axios.get('http://127.0.0.1:8000/api/todo').then(
             response => {
-                const todos = response.data
-                console.log(todos)
+                const todos = response.data.results
                 this.setState(
                     {'todos': todos}
                 )
@@ -50,14 +46,26 @@ class App extends React.Component {
 
     render() {
         return (
-            <div>
-                <MenuItem/>
-                <UserList users={this.state.users}/>
-                <ProjectList projects={this.state.projects}/>
-                <TodoList todos={this.state.todos}/>
-                <FooterItem/>
+            <div className={'App'}>
+                <BrowserRouter>
+                    <nav>
+                        <ul>
+                            <li>
+                                <Link to={'/'}>Users</Link>
+                            </li>
+                            <li>
+                                <Link to={'/projects'}>Projects</Link>
+                            </li>
+                            <li>
+                                <Link to={'/todos'}>Todos</Link>
+                            </li>
+                        </ul>
+                    </nav>
+                    <Route exact path='/' component={() => <UserList users={this.state.users}/>}/>
+                    <Route exact path='/projects' component={() => <ProjectList projects={this.state.projects}/>}/>
+                    <Route exact path='/todos' component={() => <TodoList todos={this.state.todos}/>}/>
+                </BrowserRouter>
             </div>
-
         )
     }
 }
