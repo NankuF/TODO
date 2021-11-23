@@ -8,6 +8,9 @@ class Project(models.Model):
     name = models.CharField(max_length=100, unique=True)
     repository = models.URLField(blank=True)
 
+    class Meta:
+        ordering = ['pk']
+
     def __str__(self):
         return f'{self.name}'
 
