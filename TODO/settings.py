@@ -150,8 +150,8 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
     ],
     'DEFAULT_VERSIONING_CLASS':  # list object is NOT callable!
-        # 'rest_framework.versioning.URLPathVersioning',
-        'rest_framework.versioning.NamespaceVersioning',
-
+    # 'rest_framework.versioning.URLPathVersioning', # http://127.0.0.1:8000/api/0.2/users/
+    # 'rest_framework.versioning.NamespaceVersioning', # http://127.0.0.1:8000/api/users/0.2
+        'rest_framework.versioning.QueryParameterVersioning',  # http://127.0.0.1:8000/api/users/?version=0.2
 
 }
