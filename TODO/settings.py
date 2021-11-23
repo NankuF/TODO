@@ -141,8 +141,8 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 100,
     'DEFAULT_PERMISSION_CLASSES': [
         # 'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
-        # 'rest_framework.permissions.IsAuthenticatedOrReadOnly',
-        'rest_framework.permissions.IsAuthenticated',
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+        # 'rest_framework.permissions.IsAuthenticated',
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.BasicAuthentication',
@@ -152,6 +152,8 @@ REST_FRAMEWORK = {
     'DEFAULT_VERSIONING_CLASS':  # list object is NOT callable!
     # 'rest_framework.versioning.URLPathVersioning', # http://127.0.0.1:8000/api/0.2/users/
     # 'rest_framework.versioning.NamespaceVersioning', # http://127.0.0.1:8000/api/users/0.2
-        'rest_framework.versioning.QueryParameterVersioning',  # http://127.0.0.1:8000/api/users/?version=0.2
+    'rest_framework.versioning.QueryParameterVersioning',  # http://127.0.0.1:8000/api/users/?version=0.2
+    #     'rest_framework.versioning.AcceptHeaderVersioning',
+    # в терминале curl http://127.0.0.1:8000/api/users/ -H "Accept: application/json; version=0.2"
 
 }
