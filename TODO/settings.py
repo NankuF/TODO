@@ -148,6 +148,10 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.TokenAuthentication',
-    ]
+    ],
+    'DEFAULT_VERSIONING_CLASS':  # list object is NOT callable!
+        # 'rest_framework.versioning.URLPathVersioning',
+        'rest_framework.versioning.NamespaceVersioning',
+
 
 }
