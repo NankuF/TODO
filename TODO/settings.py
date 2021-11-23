@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'rest_framework_simplejwt',
     'corsheaders',
+    'drf_yasg',
     'users.apps.UsersConfig',
     'project.apps.ProjectConfig',
 
