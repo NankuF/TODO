@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'corsheaders',
     'drf_yasg',
+    'graphene_django',
     'users.apps.UsersConfig',
     'project.apps.ProjectConfig',
 
@@ -157,4 +158,8 @@ REST_FRAMEWORK = {
     #     'rest_framework.versioning.AcceptHeaderVersioning',
     # в терминале curl http://127.0.0.1:8000/api/users/ -H "Accept: application/json; version=0.2"
 
+}
+
+GRAPHENE = {
+    'SCHEMA': 'TODO.schema.schema'
 }
