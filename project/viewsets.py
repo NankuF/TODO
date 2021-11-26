@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 
 from .models import Project, ToDo
-from .serializers import ProjectModelSerializer, ToDoModelSerializer
+from .serializers import ProjectModelSerializer, ToDoModelSerializer, ProjectModelSerializerGET
 from .paginations import ProjectPageNumberPagination, ToDoPageNumberPagination
 
 
@@ -22,6 +22,11 @@ class ProjectModelViewSet(ModelViewSet):
         if name:
             self.queryset = self.queryset.filter(name__contains=name)
         return self.queryset
+
+    def get_serializer_class(self):
+        if self.request.method in ['GET']:
+            return ProjectModelSerializerGET
+        return ProjectModelSerializer
 
 
 class ToDoModelViewSet(ModelViewSet):

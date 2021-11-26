@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'rest_framework_simplejwt',
     'corsheaders',
+    'drf_yasg',
+    'graphene_django',
     'users.apps.UsersConfig',
     'project.apps.ProjectConfig',
 
@@ -140,9 +142,24 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 100,
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'],
-    'DEFAULT_AUTHENTICATION_CLASSES': ['rest_framework.authentication.BasicAuthentication',
-                                       'rest_framework.authentication.SessionAuthentication',
-                                       'rest_framework.authentication.TokenAuthentication']
+        # 'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+        # 'rest_framework.permissions.IsAuthenticated',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+    'DEFAULT_VERSIONING_CLASS':  # list object is NOT callable!
+    # 'rest_framework.versioning.URLPathVersioning', # http://127.0.0.1:8000/api/0.2/users/
+    # 'rest_framework.versioning.NamespaceVersioning', # http://127.0.0.1:8000/api/users/0.2
+    'rest_framework.versioning.QueryParameterVersioning',  # http://127.0.0.1:8000/api/users/?version=0.2
+    #     'rest_framework.versioning.AcceptHeaderVersioning',
+    # в терминале curl http://127.0.0.1:8000/api/users/ -H "Accept: application/json; version=0.2"
 
+}
+
+GRAPHENE = {
+    'SCHEMA': 'TODO.schema.schema'
 }
