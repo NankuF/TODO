@@ -1,3 +1,5 @@
+Учебный проект API на DRF.
+
 Установка nodejs:
 1. Либо через менеджер приложений ubuntu software
 2. Либо скачать архив с сайта и установить:
@@ -9,8 +11,7 @@
 2. Дальше все команды для реакта писать в папке frontend
 3. Запуск тестового сервера реакта: npm run start
 
-
-    # чтобы галочка ставилась, надо в сериалайзере прописать
-    # active = serializers.BooleanField(initial=True)
-    # чтобы сделать только для чтения 
-    # active = serializers.BooleanField(read_only=True)
+    #чтобы галочка ставилась, надо в сериалайзере прописать
+    #active = serializers.BooleanField(initial=True)
+    #чтобы сделать только для чтения 
+    #active = serializers.BooleanField(read_only=True)
